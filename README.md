@@ -438,7 +438,8 @@ request
 Authentication for the SMS API endpoints is done using a bearer token. The bearer token is generated in the [SMS section](https://app.mailjet.com/sms) of your Mailjet account.
 
 ```javascript
-var Mailjet = require('node-mailjet').connect('api token');
+var Mailjet = require('node-mailjet')
+	.connect(process.env.MJ_APIKEY_PUBLIC, process.env.MJ_APIKEY_PRIVATE);
 ```
 
 ### Example request
@@ -447,7 +448,7 @@ Here's an example SMS API request:
 
 ```javascript
 const mailjet = require ('node-mailjet')
-	.connect(process.env.MJ_TOKEN)
+	.connect(process.env.MJ_APIKEY_PUBLIC, process.env.MJ_APIKEY_PRIVATE)
 const request = mailjet
     .post("sms-send", {'version': 'v4'})
     .request({
